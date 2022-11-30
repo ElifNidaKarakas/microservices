@@ -1,0 +1,24 @@
+package com.kodlamaio.invonteryServer.business.concretes;
+
+import java.util.List;
+
+import com.kodlamaio.invonteryServer.business.abstracts.BrandService;
+import com.kodlamaio.invonteryServer.business.request.create.CreateBrandRequest;
+import com.kodlamaio.invonteryServer.business.responses.cretae.CreateBrandResponse;
+import com.kodlamaio.invonteryServer.business.responses.get.GetAllBrandsResponse;
+
+public class BrandManager implements BrandService{
+
+	@Override
+	public List<GetAllBrandsResponse> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CreateBrandResponse add(CreateBrandRequest createBrandRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

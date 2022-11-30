@@ -1,0 +1,16 @@
+package com.kodlamaio.invonteryServer.business.responses.update;
+
+import com.kodlamaio.invonteryServer.business.responses.cretae.CreateBrandResponse;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class UpdateModelResponse {
+	private String id;
+	private String name;
+
+}

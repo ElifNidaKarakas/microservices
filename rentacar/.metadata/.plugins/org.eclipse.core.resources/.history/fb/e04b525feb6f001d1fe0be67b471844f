@@ -1,0 +1,5 @@
+package com.kodlamaio.invonteryServer.business.responses.get;
+
+public class GetCarResponse {
+
+}

@@ -1,0 +1,17 @@
+package com.kodlamaio.invonteryServer;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class InventoryServiceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(InventoryServiceApplication.class, args);
+	}
+
+	@Bean  //Modelmapper modelMapper= new ModelMapper() bunu yapnak her sefreinde modelmapper olusturur bean bir tane oluturur
+	public ModelMapper getModelMapper() {
+		return new ModelMapper();
+	}
+}

@@ -1,0 +1,12 @@
+package com.kodlamaio.invonteryServer.business.abstracts;
+
+import java.util.List;
+
+import com.kodlamaio.invonteryServer.business.request.create.CreateBrandRequest;
+import com.kodlamaio.invonteryServer.business.responses.cretae.CreateBrandResponse;
+import com.kodlamaio.invonteryServer.business.responses.get.GetAllBrandsResponse;
+
+public interface BrandService {
+List<GetAllBrandsResponse> getAll();
+CreateBrandResponse add(CreateBrandRequest createBrandRequest);
+}

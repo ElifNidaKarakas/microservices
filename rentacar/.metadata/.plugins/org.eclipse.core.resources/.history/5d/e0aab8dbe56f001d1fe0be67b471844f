@@ -1,0 +1,5 @@
+package com.kodlamaio.invonteryServer.business.request.update;
+
+public class UpdateBrandRequest {
+
+}

@@ -1,0 +1,5 @@
+package com.kodlamaio.invonteryServer.business.responses.cretae;
+
+public class CreateCarResponse {
+
+}

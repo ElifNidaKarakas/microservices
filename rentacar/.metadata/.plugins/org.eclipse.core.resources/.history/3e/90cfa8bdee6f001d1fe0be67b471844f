@@ -1,0 +1,18 @@
+package com.kodlamaio.invonteryServer.webApiControllor;
+
+import javax.persistence.Entity;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@RestController
+@RequestMapping("/api/brands")
+public class BrandController {
+
+	
+}
