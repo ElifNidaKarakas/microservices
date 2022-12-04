@@ -51,4 +51,8 @@ public class CarController {
 	public void delete(String id) {
       carService.delete(id);
 	}
+	 @GetMapping("/checkIfCarAvailable/{id}")
+	    public void checkIfCarAvailable(@PathVariable String id) {
+	        carService.checkIfCarAvailable(id);
+	    }
 }

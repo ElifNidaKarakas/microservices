@@ -11,8 +11,16 @@ import com.kodlamaio.invonteryServer.business.responses.update.UpdateCarResponse
 
 public interface CarService {
 	List<GetAllCarsResponse> getAll();
+
 	GetCarResponse getById(String id);
+
 	CreateCarResponse add(CreateCarRequest createCarRequest);
+
 	UpdateCarResponse update(UpdateCarRequest updateCarRequest);
+
 	void delete(String id);
+
+	void changeState(int state,String id);
+	void checkIfCarAvailable(String id);
+	void updateCarState(String carId,int state);
 }

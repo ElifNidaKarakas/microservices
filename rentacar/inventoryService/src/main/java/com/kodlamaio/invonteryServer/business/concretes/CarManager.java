@@ -20,6 +20,7 @@ import com.kodlamaio.invonteryServer.dataAccess.CarRepository;
 import com.kodlamaio.invonteryServer.entities.Car;
 
 import lombok.AllArgsConstructor;
+
 @Service
 @AllArgsConstructor
 public class CarManager implements CarService {
@@ -61,7 +62,8 @@ public class CarManager implements CarService {
 	public UpdateCarResponse update(UpdateCarRequest updateCarRequest) {
 		checkIfCarExistsById(updateCarRequest.getId());
 		checkIfCarExistsByPlate(updateCarRequest.getPlate());
-		checkIfModelExistsByModelId(updateCarRequest.getModelId());;
+		checkIfModelExistsByModelId(updateCarRequest.getModelId());
+		;
 		Car car = this.modelMapperService.forRequest().map(updateCarRequest, Car.class);
 		carRepository.save(car);
 
@@ -71,28 +73,51 @@ public class CarManager implements CarService {
 
 	@Override
 	public void delete(String id) {
+		checkIfCarExistsById(id);
 		carRepository.deleteById(id);
+	}
+
+	@Override
+	public void checkIfCarAvailable(String id) {
+		Car car = carRepository.findById(id).get();
+		if (car.getState() != 3) {
+			throw new BusinessException("CAR.NOT_AVAILABLE");
+		}
+	}
+
+	@Override
+	public void changeState(int state, String id) {
+		carRepository.changeStateByCarId(state, id);
+
 	}
 
 	private void checkIfCarExistsById(String id) {
 		var result = carRepository.findById(id);
-		if (result == null ) {
+		if (result == null) {
 			throw new BusinessException("CAR NO EXISTS");
 		}
 	}
-	
+
 	private void checkIfCarExistsByPlate(String plate) {
 		var result = carRepository.findByPlate(plate);
 		if (result != null) {
 			throw new BusinessException("CAR EXISTS");
 		}
 	}
-	
+
 	private void checkIfModelExistsByModelId(String modelId) {
 		var result = modelService.getById(modelId);
 		if (result == null) {
 			throw new BusinessException("MODEL NO EXİSTS");
 		}
+	}
+
+	@Override
+	public void updateCarState(String carId, int state) {
+		Car car = carRepository.findById(carId).get();
+		car.setState(state);
+		carRepository.save(car);
+
 	}
 
 }
