@@ -28,7 +28,7 @@ public class Payment {
 	 @Column(name = "cvv")
 	 private String cvv;
 	 @Column(name = "cardDate")
-	 private LocalDate cardDate;
+	 private LocalDate cardDate; // Son Kullanma Tarihi
 	 @Column(name = "rentalId")
 	 private String rentalId;
 	 @Column(name = "balance") //kart limiti
