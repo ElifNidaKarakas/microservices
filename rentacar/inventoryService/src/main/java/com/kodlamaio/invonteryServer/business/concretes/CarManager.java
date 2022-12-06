@@ -86,9 +86,11 @@ public class CarManager implements CarService {
 	}
 
 	@Override
-	public void changeState(int state, String id) {
-		carRepository.changeStateByCarId(state, id);
-
+	public void changeState(String id) {
+		Car car=carRepository.findById(id).orElseThrow();
+		car.setState(3);
+		carRepository.save(car);
+		
 	}
 
 	private void checkIfCarExistsById(String id) {
@@ -113,10 +115,12 @@ public class CarManager implements CarService {
 	}
 
 	@Override
-	public void updateCarState(String carId, int state) {
+	public UpdateCarResponse updateCarState(String carId, int state) {
 		Car car = carRepository.findById(carId).get();
 		car.setState(state);
 		carRepository.save(car);
+		UpdateCarResponse updateCarResponse = this.modelMapperService.forResponse().map(car,UpdateCarResponse.class);
+		return updateCarResponse;
 
 	}
 

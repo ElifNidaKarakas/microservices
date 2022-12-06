@@ -16,4 +16,5 @@ public interface RentalService {
 	CreateRentalResponse add(CreateRentalRequest createRentalRequest);
 	UpdateRentalResponse update(UpdateRentalRequest updateRentalRequest);
 	void delete(String id);
+	double getTotalPrice(String id);
 }

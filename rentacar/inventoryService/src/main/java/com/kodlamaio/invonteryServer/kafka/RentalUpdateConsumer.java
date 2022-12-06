@@ -22,8 +22,8 @@ public class RentalUpdateConsumer {
 	            topics = "${spring.kafka.topic.name}"
 	            , groupId = "rental-update")
     public void consume(CarRentalUpdateEvent event) {
-    	 carService.changeState(3, event.getOldCarId());
-	        carService.changeState(2, event.getNewCarId());
+    	 carService.updateCarState( event.getOldCarId(),3);
+         carService.updateCarState( event.getNewCarId(),2);
 	        LOGGER.info("Car state updated!");
     	
     }

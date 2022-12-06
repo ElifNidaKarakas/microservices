@@ -20,7 +20,8 @@ public interface CarService {
 
 	void delete(String id);
 
-	void changeState(int state,String id);
+	void changeState(String id);
 	void checkIfCarAvailable(String id);
-	void updateCarState(String carId,int state);
+	UpdateCarResponse updateCarState(String carId,int state);
+	
 }

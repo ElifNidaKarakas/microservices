@@ -17,25 +17,21 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="payments")
 public class Payment {
-	 @Id
-	 @Column(name = "id")
-	 private String id;
-	 
-	 @Column(name = "cardNo")
-	 private String cardNo;
-	 @Column(name = "cardHolder")
-	 private String cardHolder;
-	 @Column(name = "cvv")
-	 private String cvv;
-	 @Column(name = "cardDate")
-	 private LocalDate cardDate; // Son Kullanma Tarihi
-	 @Column(name = "rentalId")
-	 private String rentalId;
-	 @Column(name = "balance") //kart limiti
-	 private double balance;
-	 @Column(name = "statusPayment")
-	 private int statusPayment;
-	 
+	@Id
+    @Column(name = "id")
+    private String id;
+    @Column(name = "card_number")
+    private String cardNumber;
+    @Column(name = "full_name")
+    private String fullName;
+    @Column(name = "card_expiration_year")
+    private int cardExpirationYear;
+    @Column(name = "card_expiration_month")
+    private int cardExpirationMonth;
+    @Column(name = "card_cvv")
+    private String cardCvv;
+    @Column(name = "balance")
+    private double balance;
 	 
 		
 }

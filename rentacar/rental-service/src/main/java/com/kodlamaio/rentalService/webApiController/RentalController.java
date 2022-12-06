@@ -1,5 +1,7 @@
 package com.kodlamaio.rentalService.webApiController;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,11 +24,19 @@ public class RentalController {
 	private RentalService rentalService;
 	@PostMapping
 	public CreateRentalResponse add(@RequestBody CreateRentalRequest createRentalRequest) {
+		
 		return this.rentalService.add(createRentalRequest);
 	}
 	
-	@PutMapping
+	@PutMapping()
 	public UpdateRentalResponse update(@RequestBody UpdateRentalRequest updateRentalRequest) {
+		
 		return rentalService.update(updateRentalRequest);
 	}
+	
+	@GetMapping("/totalpricebyid/{id}")
+	public double getTotalPrice(@PathVariable String id) {
+		return rentalService.getTotalPrice(id);
+	}
+	
 }

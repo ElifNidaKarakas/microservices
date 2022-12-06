@@ -20,7 +20,7 @@ public class RentalConsumer {
 	public void consume(RentalCreatedEvent event) {
 		LOGGER.info(String.format("  Rental Created event received in stock service => %s", event.toString()));
 
-		this.carService.updateCarState(event.getCarId(), 1);
+		this.carService.changeState(event.getCarId());
 	
 	}
 

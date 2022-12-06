@@ -20,6 +20,5 @@ public class UpdateRentalRequest {
 	private int rentedForDays;
 	@NotNull
 	private double dailyPrice;
-	@NotNull
-	private double totalPrice;
+	
 }

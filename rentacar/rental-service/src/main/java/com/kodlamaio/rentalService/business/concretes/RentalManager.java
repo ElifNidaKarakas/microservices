@@ -65,12 +65,16 @@ public class RentalManager implements RentalService {
 
 	@Override
 	public UpdateRentalResponse update(UpdateRentalRequest updateRentalRequest) {
-		checkIfRentalExists(updateRentalRequest.getId());
-		Rental rental=this.modelMapperService.forRequest().map(updateRentalRequest, Rental.class);
+	     checkIfRentalExists(updateRentalRequest.getId());
+	     Rental rental=this.rentalRepository.findById(updateRentalRequest.getId()).get();
 		rental.setTotalPrice(updateRentalRequest.getDailyPrice()*updateRentalRequest.getRentedForDays());
 		rentalRepository.save(rental);
 		
 		CarRentalUpdateEvent rentalUpdatedEvent = new CarRentalUpdateEvent();
+		rentalUpdatedEvent.setOldCarId(rental.getCarId());
+		Rental rentalSave=this.modelMapperService.forRequest().map(updateRentalRequest, Rental.class);
+		Rental rentalUpdate=this.rentalRepository.save(rentalSave);
+		
 		rentalUpdatedEvent.setNewCarId(updateRentalRequest.getCarId());
 		rentalUpdatedEvent.setMessage("Rental Updated");
 	    rentalUpdatedProducer.sendMessage(rentalUpdatedEvent);
@@ -91,5 +95,10 @@ public class RentalManager implements RentalService {
 	            throw new BusinessException("Rental not found");
 	        }
 	    }
+
+	@Override
+	public double getTotalPrice(String id) {
+		return rentalRepository.findById(id).get().getTotalPrice();
+	}
 
 }
