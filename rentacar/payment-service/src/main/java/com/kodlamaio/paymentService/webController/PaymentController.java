@@ -30,15 +30,12 @@ public class PaymentController {
 	    public void checkIfPaymentSuccessful(
 	            @RequestParam String cardNumber,
 	            @RequestParam String fullName,
-	            @RequestParam int cardExpirationYear,
-	            @RequestParam int cardExpirationMonth,
 	            @RequestParam String cardCvv,
 	            @RequestParam double price) {
 	        PaymentRequest request =
 	                new PaymentRequest(cardNumber,
 	                                   fullName,
-	                                   cardExpirationYear,
-	                                   cardExpirationMonth,
+	                                   
 	                                   cardCvv,
 	                                   price);
 	        paymentService.checkIfPaymentSuccessful(request);

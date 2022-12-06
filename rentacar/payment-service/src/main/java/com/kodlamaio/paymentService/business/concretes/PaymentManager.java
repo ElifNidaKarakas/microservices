@@ -50,11 +50,11 @@ public class PaymentManager implements PaymentService {
 	}
 	
 	 private void checkPayment(PaymentRequest request) {
-	        if (!repository.existsByCardNumberAndFullNameAndCardExpirationYearAndCardExpirationMonthAndCardCvv(
+	        if (!repository.existsByCardNumberAndFullNameAndCardCvv(
 	                request.getCardNumber(),
 	                request.getFullName(),
-	                request.getCardExpirationYear(),
-	                request.getCardExpirationMonth(),
+	               // request.getCardExpirationYear(),
+	               // request.getCardExpirationMonth(),
 	                request.getCardCvv())) {
 	            throw new BusinessException("NOT_A_VALID_PAYMENT!");
 	        } else {
