@@ -1,7 +1,0 @@
-package com.kodlamaio.invonteryServer.business.concretes;
-
-import com.kodlamaio.invonteryServer.business.abstracts.CarService;
-
-public class CarManager implements CarService{
-
-}

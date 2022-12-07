@@ -1,7 +1,0 @@
-package com.kodlamaio.invonteryServer.business.concretes;
-
-import com.kodlamaio.invonteryServer.business.abstracts.BrandService;
-
-public class BrandManager implements BrandService{
-
-}
