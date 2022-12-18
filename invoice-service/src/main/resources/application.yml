@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: invoice-service
+  cloud:
+    config:
+<<<<<<< HEAD:rentacar/invoice-service/src/main/resources/application.yml
+      profile: dev
+  config:
+    import: configserver:http://localhost:8888
+=======
+      profile: ${PROFILE}
+  config:
+    import: configserver:http://localhost:8888,optional:file:.env[.properties]
+>>>>>>> 85ae80248b127cbb1aa9e0a0224b008688395ea4:invoice-service/src/main/resources/application.yml

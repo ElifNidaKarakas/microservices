@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: inventoryService
+  cloud:
+    config:
+      profile: dev
+  config:
+    import: configserver:http://localhost:8888
+    

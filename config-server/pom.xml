@@ -12,7 +12,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>config-server</name>
 	<description>Config Server</description>
+<<<<<<< HEAD
 <properties>
+=======
+	<properties>
+>>>>>>> 85ae80248b127cbb1aa9e0a0224b008688395ea4
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
 	</properties>
@@ -21,7 +25,14 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+>>>>>>> 85ae80248b127cbb1aa9e0a0224b008688395ea4
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -48,5 +59,18 @@
 			</plugin>
 		</plugins>
 	</build>
+<<<<<<< HEAD
+=======
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+>>>>>>> 85ae80248b127cbb1aa9e0a0224b008688395ea4
 
 </project>

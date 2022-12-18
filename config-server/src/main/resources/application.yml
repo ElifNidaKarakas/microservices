@@ -6,8 +6,18 @@ spring:
     cloud:
         config:
             server:
+<<<<<<< HEAD
                 default-label: master
                 git:
                     uri: https://github.com/ElifNidaKarakas/microservice-config-server
     profiles:
         active: ${PROFILE}
+=======
+                default-label: main
+                git:
+                    uri: https://github.com/ElifNidaKarakas/microservice-config-server
+    profiles:
+        active: dev 
+     
+        
+>>>>>>> 85ae80248b127cbb1aa9e0a0224b008688395ea4

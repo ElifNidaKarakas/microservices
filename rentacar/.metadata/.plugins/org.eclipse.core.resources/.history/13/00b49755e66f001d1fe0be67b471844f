@@ -1,5 +1,0 @@
-package com.kodlamaio.invonteryServer.business.responses.update;
-
-public class UpdateBrandResponse {
-
-}

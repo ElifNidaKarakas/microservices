@@ -1,5 +1,0 @@
-package com.kodlamaio.invonteryServer.dataAccess;
-
-public interface ModelRepository extends JpaRepository<Model, String>{
-
-}
