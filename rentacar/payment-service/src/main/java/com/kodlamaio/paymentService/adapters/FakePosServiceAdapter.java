@@ -9,7 +9,7 @@ import com.kodlamaio.paymentService.business.abstracts.PosService;
 
 @Service
 public class FakePosServiceAdapter implements PosService {
-
+// gercek bankamız olmadıgı için random değer  veren bir pos servis olusturyoruz
 	@Override
 	public void pay() {
 		int randomNumber = new Random().nextInt(10);

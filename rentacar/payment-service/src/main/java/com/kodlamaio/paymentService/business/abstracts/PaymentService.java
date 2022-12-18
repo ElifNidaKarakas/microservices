@@ -1,14 +1,19 @@
 package com.kodlamaio.paymentService.business.abstracts;
 
+import java.util.List;
+
 import com.kodlamaio.paymentService.business.request.CreatePaymentRequest;
 import com.kodlamaio.paymentService.business.request.PaymentRequest;
+import com.kodlamaio.paymentService.business.request.UpdatePaymentRequest;
 import com.kodlamaio.paymentService.business.responses.CreatePaymentResponses;
+import com.kodlamaio.paymentService.business.responses.GetAllPaymentsResponse;
 
 public interface PaymentService {
-	  //List<GetAllPaymentsResponse> getAll();
-	    //GetPaymentResponse getById(String id);
-	    CreatePaymentResponses add(CreatePaymentRequest request);
-	    //UpdatePaymentResponse update(UpdatePaymentRequest request, String id);
-	    void delete(String id);
-	    void checkIfPaymentSuccessful(PaymentRequest request);
+	CreatePaymentResponses add(CreatePaymentRequest request);
+
+	void checkIfPaymentSuccessful(PaymentRequest request);
+
+	List<GetAllPaymentsResponse> getAll();
+
+	void update(String id, UpdatePaymentRequest updatePaymentRequest);
 }

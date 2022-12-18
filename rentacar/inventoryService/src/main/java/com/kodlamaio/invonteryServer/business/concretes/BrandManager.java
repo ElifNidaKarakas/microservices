@@ -3,7 +3,10 @@ package com.kodlamaio.invonteryServer.business.concretes;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
+
+import com.kodlamaio.common.events.filterService.BrandUpdatedEvent;
 import com.kodlamaio.common.utilities.exceptions.BusinessException;
 import com.kodlamaio.common.utilities.mapping.ModelMapperService;
 import com.kodlamaio.invonteryServer.business.abstracts.BrandService;
@@ -15,6 +18,7 @@ import com.kodlamaio.invonteryServer.business.responses.get.GetBrandResponse;
 import com.kodlamaio.invonteryServer.business.responses.update.UpdateBrandResponse;
 import com.kodlamaio.invonteryServer.dataAccess.BrandRepository;
 import com.kodlamaio.invonteryServer.entities.Brand;
+import com.kodlamaio.invonteryServer.kafka.producer.FilterServiceProducer;
 
 import lombok.AllArgsConstructor;
 
@@ -23,6 +27,8 @@ import lombok.AllArgsConstructor;
 public class BrandManager implements BrandService {
 	private BrandRepository brandRepository;
 	private ModelMapperService modelMapperService;
+	private FilterServiceProducer filterServiceProducer;
+	
 
 	@Override
 	public List<GetAllBrandsResponse> getAll() {
@@ -34,6 +40,8 @@ public class BrandManager implements BrandService {
 
 		return response;
 	}
+	
+	
 	@Override
 	public GetBrandResponse getById(String id) {
 		checkIfBrandExistsById(id);
@@ -63,6 +71,10 @@ public class BrandManager implements BrandService {
 		this.brandRepository.save(brand);
 		
 		UpdateBrandResponse brandResponse=this.modelMapperService.forResponse().map(brand, UpdateBrandResponse.class);
+		
+
+		updateToFilterServiceBrandName(brandResponse.getId(), brandResponse.getName());
+		
 		return brandResponse;
 	}
 
@@ -86,5 +98,14 @@ public class BrandManager implements BrandService {
 			throw new BusinessException("BRAND.NO.EXISTS");
 		}
 	}
+	
+	
+	 private void updateToFilterServiceBrandName(String id, String name) {
+	        BrandUpdatedEvent event = new BrandUpdatedEvent();
+	        event.setId(id);
+	        event.setName(name);
+	        filterServiceProducer.sendMessage(event);
+	    }
+	
 	
 }

@@ -32,27 +32,29 @@ public class CarController {
 		return carService.getAll();
 	}
 
-	@GetMapping("/{id}")
-	public GetCarResponse getById(@PathVariable String id) {
-		return carService.getById(id);
-	}
 
 	@PostMapping
 	public CreateCarResponse add(@RequestBody CreateCarRequest createCarRequest) {
 		return carService.add(createCarRequest);
 	}
 
-	@PutMapping
-	public UpdateCarResponse update(UpdateCarRequest updateCarRequest) {
-		return carService.update(updateCarRequest);
+	@PutMapping("/{id}")
+	public UpdateCarResponse update(@RequestBody UpdateCarRequest updateCarRequest, @PathVariable String id) {
+		return carService.update(updateCarRequest, id);
 	}
 
-	@DeleteMapping
-	public void delete(String id) {
-      carService.delete(id);
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable String id) {
+		carService.delete(id);
 	}
-	 @GetMapping("/checkIfCarAvailable/{id}")
-	    public void checkIfCarAvailable(@PathVariable String id) {
-	        carService.checkIfCarAvailable(id);
-	    }
+
+    @GetMapping("/{id}")
+    public GetCarResponse getById(@PathVariable  String id) {
+        return carService.getById(id);
+    }
+    
+	@GetMapping("/carAvialibleState/{carId}")
+	public void carAvialibleState(@PathVariable String carId) {
+		carService.carAvialibleState(carId);
+	}
 }

@@ -9,7 +9,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
-import com.kodlamaio.common.events.CarRentalUpdateEvent;
+import com.kodlamaio.common.events.rental.CarRentalUpdateEvent;
 
 import lombok.AllArgsConstructor;
 

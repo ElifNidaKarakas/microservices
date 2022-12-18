@@ -9,8 +9,8 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
-import com.kodlamaio.common.events.PaymentReceivedEvent;
-import com.kodlamaio.common.events.RentalCreatedEvent;
+import com.kodlamaio.common.events.rental.InvoiceCreatedEvent;
+import com.kodlamaio.common.events.rental.RentalCreatedEvent;
 //msj bilgileri bu classda veririz
 @Service
 public class RentalProducer {
@@ -35,15 +35,14 @@ public class RentalProducer {
 		kafkaTemplate.send(message);
 	}
 	
-	 public void sendMessage(PaymentReceivedEvent event) {
-	        LOGGER.info(String.format("Payment received event => %s", event.toString()));
+	 public void sendMessage(InvoiceCreatedEvent invoiceCreateEvent) {
+	        LOGGER.info(String.format("Rental invoice event => %s", invoiceCreateEvent.toString()));
 
-	        Message<PaymentReceivedEvent> message = MessageBuilder
-	                .withPayload(event)
+	        Message<InvoiceCreatedEvent> message = MessageBuilder
+	                .withPayload(invoiceCreateEvent)
 	                .setHeader(KafkaHeaders.TOPIC, topic.name()).build();
 
 	        kafkaTemplate.send(message);
 	    }
-	
 	
 }

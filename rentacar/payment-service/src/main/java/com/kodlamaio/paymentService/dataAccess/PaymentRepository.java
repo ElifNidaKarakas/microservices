@@ -10,5 +10,4 @@ public interface PaymentRepository extends JpaRepository<Payment, String> {
 
 	Payment findByCardNumber(String cardNumber);
 
-	boolean existsByCardNumber(String cardNumber);
 }

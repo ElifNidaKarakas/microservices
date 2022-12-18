@@ -16,12 +16,12 @@ public interface CarService {
 
 	CreateCarResponse add(CreateCarRequest createCarRequest);
 
-	UpdateCarResponse update(UpdateCarRequest updateCarRequest);
+	UpdateCarResponse update(UpdateCarRequest updateCarRequest,String id);
 
 	void delete(String id);
 
-	void changeState(String id);
-	void checkIfCarAvailable(String id);
-	UpdateCarResponse updateCarState(String carId,int state);
+	void changeCarState(String id,int state);
+
+    void carAvialibleState(String carId);
 	
 }
